@@ -133,14 +133,13 @@ public class TimelineActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
     protected void OnActivityResult(int requestCode, int resultCode, @Nullable Intent data){
+        super.onActivityResult(requestCode,resultCode,data);
         if (requestCode == REQUEST_CODE && resultCode ==RESULT_OK){
             Tweet tweet = Parcels.unwrap(data.getParcelableExtra("tweet"));
             tweets.add(0,tweet);
             adpter.notifyItemInserted(0);
             rvTweets.smoothScrollToPosition(0);
         }
-        super.onActivityResult(requestCode,resultCode,data);
-
     }
 
     private void populateHomeTimeline() {
